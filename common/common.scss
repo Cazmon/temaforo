@@ -399,11 +399,15 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 .admin-body #main-outlet,
 .admin-interface #main-outlet-wrapper,
 .admin-body #main-outlet-wrapper,
-.nav-pills,
-#main-container {
+.nav-pills {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     animation: none !important;
+}
+
+// Ocultar contenedor vacío redundante
+#main-container {
+    display: none !important;
 }
