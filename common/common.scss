@@ -375,7 +375,16 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 // --- Ocultación de Elementos Nativos Solicitada ---
 .d-header,
 .b-header,
+.custom-search-banner-headline,
+.search-menu.welcome-banner__search-menu,
 .w-full.fixed:not(.navbar-bg) {
+    display: none !important;
+}
+
+// Ocultar la parte de la IP (Selector genérico para buscar el texto o el contenedor probable)
+.welcome-banner .ip-display,
+.welcome-banner .server-ip,
+.custom-search-banner .ip-container {
     display: none !important;
 }
 
