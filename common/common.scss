@@ -162,16 +162,20 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 }
 
 // --- Sidebar de Administración (/admin) ---
-.admin-controls,
-.sidebar-sections.admin-panel {
+.admin-controls {
     background: var(--sd-glass-bg-dark) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--sd-glass-border);
     border-radius: 24px;
-    padding: 2rem 1.5rem !important;
+    padding: 2rem 1.25rem !important; // Igual que el foro
     margin-top: 20px !important;
     box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
+    height: auto !important;
+    min-height: calc(100vh - 200px);
+    position: sticky;
+    top: 150px;
+    margin-right: 20px;
 
     .nav-stacked {
         background: transparent !important;
@@ -201,12 +205,16 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
     }
 }
 
-// Forzar transparencia en el área del sidebar de admin para quitar el gris
-.admin-controls,
+// Forzar transparencia absoluta en sub-elementos para evitar "doble caja"
 .admin-controls .nav-stacked,
+.sidebar-sections,
+.admin-panel,
 .sidebar-sections.admin-panel,
 .sidebar-sections.admin-panel .nav-stacked {
-    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
 }
 
 
