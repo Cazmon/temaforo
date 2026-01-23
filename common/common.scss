@@ -71,8 +71,9 @@ body {
     background-color: transparent !important;
 }
 
-/* Ocultar cabecera predeterminada de Discourse */
-.d-header {
+/* Ocultar cabecera predeterminada de Discourse y Brand Header */
+.d-header,
+.b-header {
     display: none !important;
 }
 
