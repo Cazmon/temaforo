@@ -399,7 +399,8 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 .admin-interface #main-outlet,
 .admin-body #main-outlet,
 .admin-interface #main-outlet-wrapper,
-.admin-body #main-outlet-wrapper {
+.admin-body #main-outlet-wrapper,
+.nav-pills {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
