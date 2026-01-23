@@ -1,7 +1,7 @@
 {
-  "name": "SurvivalDub Master V3.0",
+  "name": "SurvivalDub Master V3.1",
   "authors": "Cazmon-SurvivalDub",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "license_url": "https://github.com/discourse/discourse-air/blob/main/LICENSE",
   "components": [
     "https://github.com/discourse/discourse-minimal-category-boxes.git",
