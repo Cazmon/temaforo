@@ -1,7 +1,7 @@
 {
-  "name": "SurvivalDub Master V3.1",
+  "name": "SurvivalDub Master V3.2 FINAL",
   "authors": "Cazmon-SurvivalDub",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license_url": "https://github.com/discourse/discourse-air/blob/main/LICENSE",
   "components": [
     "https://github.com/discourse/discourse-minimal-category-boxes.git",
@@ -24,19 +24,19 @@
       "love": "c16ad7",
       "selected": "e1ebfb"
     },
-    "air-dark": {
+    "SurvivalDub Violeta Dark": {
       "primary": "e0e0e0",
-      "secondary": "2d2d2d",
-      "tertiary": "9a5cfd",
-      "quaternary": "71bd9f",
-      "header_background": "202020",
+      "secondary": "13013c",
+      "tertiary": "FFD21E",
+      "quaternary": "FFD21E",
+      "header_background": "13013c",
       "header_primary": "e0e0e0",
-      "highlight": "9a5cfd",
+      "highlight": "FFD21E",
       "danger": "d05454",
       "success": "71bd9f",
       "love": "c16ad7",
       "selected": "2f0177",
-      "hover": "535353"
+      "hover": "3a017d"
     }
   },
   "assets": {
