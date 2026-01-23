@@ -5,7 +5,7 @@
   --sd-purple-dark: #13013C;
   --sd-purple-mid: #6621A2;
   --sd-purple-light: #51299B;
-  --sd-purple-sidebar: rgba(19, 1, 60, 0.4); // 40% opaco
+  --sd-purple-sidebar: rgba(19, 1, 60, 0.4);
   --sd-yellow: #FCD310;
   --sd-yellow-dark: #FAC108;
   --sd-discord: #818CF8;
@@ -27,12 +27,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  // Usando la ruta relativa del activo subido al tema
-  background-image: url($background_image);
+  background-image: url(/theme-uploads/default/fondo_paginas.webp);
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
-  opacity: 0.25; // 75% transparencia
+  opacity: 0.25;
   z-index: -1;
 }
 
