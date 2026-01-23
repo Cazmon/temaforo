@@ -2,6 +2,7 @@
 
 :root {
     --sd-purple-dark: #13013C;
+    --sd-purple-sidebar: rgba(19, 1, 60, 0.55);
     --sd-yellow: #FFD21E;
     --font-family: 'Poppins', sans-serif;
 }
@@ -18,8 +19,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--sd-purple-dark);
-    opacity: 0.75;
+    background-image: url('https://foro.survivaldub.com/uploads/default/original/1X/fondo_paginas.webp');
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+    opacity: 0.25;
     z-index: -1;
 }
 
@@ -27,12 +31,54 @@ body::before {
     margin-top: 150px !important;
     background: rgba(19, 1, 60, 0.45) !important;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
     padding: 2.5rem !important;
     max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.sidebar-wrapper {
+    margin-top: 150px !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.sidebar-wrapper::before,
+.sidebar-wrapper::after {
+    display: none !important;
+    content: none !important;
+}
+
+.sidebar-container {
+    background: var(--sd-purple-sidebar) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 24px 24px 0;
+    padding: 2rem 1.25rem !important;
+    height: auto !important;
+    min-height: calc(100vh - 150px);
+    position: sticky;
+    top: 150px;
+    overflow: visible !important;
+    box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-container::before,
+.sidebar-container::after {
+    display: none !important;
+    content: none !important;
+}
+
+.sidebar-footer-wrapper,
+.sidebar-section-header,
+.sidebar-section-link-wrapper {
+    background: transparent !important;
+    border: none !important;
 }
 
 .sd-nav-wrapper {
@@ -47,6 +93,10 @@ body::before {
 
 .navbar-gradient-exact {
     background: linear-gradient(to bottom, #6b21a8, #4c1d95);
+}
+
+.navbar-bg {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .btn-discord {
@@ -64,6 +114,9 @@ body::before {
     border: none;
     cursor: pointer;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-yellow-small:hover {
@@ -72,16 +125,34 @@ body::before {
 }
 
 .nav-link {
-    color: white;
-    text-decoration: none;
+    color: white !important;
+    text-decoration: none !important;
     font-weight: 800;
     font-size: 15px;
     text-transform: uppercase;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
     transition: all 0.2s;
+    position: relative;
 }
 
 .nav-link:hover {
-    color: #FFD21E;
+    color: #FFD21E !important;
     transform: scale(1.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #FFD21E;
+    border-radius: 9999px;
+    box-shadow: 0 0 8px rgba(253, 224, 71, 0.6);
+    transition: width 0.2s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
