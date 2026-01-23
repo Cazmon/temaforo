@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --sd-purple-dark: #13013C;
+    --sd-yellow: #FFD21E;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--sd-purple-dark) !important;
+    font-family: var(--font-family) !important;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sd-purple-dark);
+    opacity: 0.75;
+    z-index: -1;
+}
+
+#main-outlet {
+    margin-top: 150px !important;
+    background: rgba(19, 1, 60, 0.45) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem !important;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sd-nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: none;
+    padding-top: 1.5rem;
+}
+
+.navbar-gradient-exact {
+    background: linear-gradient(to bottom, #6b21a8, #4c1d95);
+}
+
+.btn-discord {
+    background: rgba(129, 140, 248, 0.2);
+    transition: all 0.2s;
+}
+
+.btn-discord:hover {
+    background: rgba(129, 140, 248, 0.4);
+    transform: scale(1.05);
+}
+
+.btn-yellow-small {
+    background: linear-gradient(135deg, #FCD310 0%, #FAC108 100%);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-yellow-small:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(252, 211, 16, 0.4);
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+    color: #FFD21E;
+    transform: scale(1.1);
+}
