@@ -1,7 +1,7 @@
 {
-  "name": "Air Theme",
-  "authors": "Discourse",
-  "about_url": "https://meta.discourse.org/t/discourse-air-theme/197703",
+  "name": "SurvivalDub Master Theme",
+  "authors": "Antigravity & SurvivalDub Team",
+  "about_url": "https://survivaldub.com",
   "license_url": "https://github.com/discourse/discourse-air/blob/main/LICENSE",
   "components": [
     "https://github.com/discourse/discourse-minimal-category-boxes.git",
@@ -39,5 +39,8 @@
       "hover": "535353"
     }
   },
-  "screenshots": ["screenshots/light.webp", "screenshots/dark.webp"]
+  "screenshots": [
+    "screenshots/light.webp",
+    "screenshots/dark.webp"
+  ]
 }
