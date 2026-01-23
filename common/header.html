@@ -29,6 +29,11 @@
 
         <div class="flex justify-start items-center gap-5 text-white"
             style="display: flex; justify-content: flex-start; align-items: center; gap: 1.25rem; color: white;">
+
+            <!-- Contenedor para Iconos de Discourse (User, Chat, Search) -->
+            <div id="sd-discourse-panel" class="flex items-center gap-3 mr-2"
+                style="display: flex; align-items: center; gap: 0.75rem; margin-right: 0.5rem;"></div>
+
             <a href="https://discord.gg/7QqcKdJw7n" target="_blank" rel="noopener noreferrer"
                 aria-label="Unirse a Discord" title="Discord">
                 <div class="btn-discord flex items-center justify-center w-[41.66px] h-[38px] rounded-xl"
@@ -97,6 +102,24 @@
                 icons.querySelectorAll('a').forEach(l => {
                     const h = (l.getAttribute('href') || '').toLowerCase();
                     if (h.includes('tienda') || h.includes('shop') || h.includes('store')) tS.setAttribute('href', l.getAttribute('href'));
+                });
+            }
+
+            // --- MOVER ICONOS DE DISCOURSE (USER, CHAT, SEARCH) ---
+            const panel = document.getElementById('sd-discourse-panel');
+            if (panel) {
+                const userMenu = document.querySelector('li#current-user.header-dropdown-toggle');
+                const chatIcon = document.querySelector('.header-dropdown-toggle.chat-header-icon');
+                const searchIcon = document.querySelector('.header-dropdown-toggle.search-dropdown');
+
+                [searchIcon, chatIcon, userMenu].forEach(icon => {
+                    if (icon && icon.parentElement !== panel) {
+                        // Limpiar estilos nativos que puedan molestar
+                        icon.style.display = 'block';
+                        icon.style.visibility = 'visible';
+                        icon.style.listStyle = 'none';
+                        panel.appendChild(icon);
+                    }
                 });
             }
         }
