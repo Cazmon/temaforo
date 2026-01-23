@@ -5,6 +5,6 @@
   "about_url": "https://survivaldub.com",
   "license_url": "https://github.com/Cazmon/temaforo/blob/main/LICENSE",
   "assets": {
-    "background_image": "assets/fondo_paginas.webp"
+    "forum-background": "assets/fondo_paginas.webp"
   }
 }

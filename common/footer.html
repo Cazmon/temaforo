@@ -133,6 +133,9 @@
 
     function updatePlayerCount() {
         const el = document.getElementById('count-val');
+        if (el && !el.innerHTML.includes('JUGADORES')) {
+            el.innerHTML = '0 JUGADORES EN LÍNEA <span style="opacity: 0.4;">|</span> HAZ CLIC PARA COPIAR';
+        }
         fetch('https://api.mcsrvstat.us/2/mc.survivaldub.com')
             .then(r => r.json())
             .then(d => {
