@@ -1,0 +1,93 @@
+<div class="sd-nav-wrapper">
+    <div class="navbar-gradient-exact navbar-bg rounded-2xl shadow-xl px-8"
+        style="width: 1240px; max-width: 95%; height: 80px; display: flex; align-items: center; justify-content: flex-start; gap: 1rem; margin: 0 auto; pointer-events: auto;">
+
+        <a href="/"
+            style="position: relative; display: flex; align-items: center; justify-content: center; width: 120px; text-decoration: none; z-index: 10;">
+            <div
+                style="position: absolute; width: 64px; height: 64px; background: #FACC15; border-radius: 9999px; filter: blur(24px); opacity: 0.5; z-index: 0;">
+            </div>
+            <img src="https://foro.survivaldub.com/uploads/default/original/1X/8f7a85436842199f12c0dfaf14157c147561ebb0.png"
+                alt="SurvivalDub" class="sd-dynamic-logo"
+                style="position: relative; height: 48px; width: auto; object-fit: contain; filter: brightness(1.18); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+        </a>
+
+        <div style="flex: 1; padding-left: 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <nav id="sd-dynamic-nav" style="display: flex; align-items: center; gap: 2.5rem;">
+                <a href="/" class="nav-link">Inicio</a>
+            </nav>
+
+            <div style="display: flex; align-items: center; gap: 1.25rem;">
+                <a id="sd-discord-header" href="https://discord.gg/7QqcKdJw7n" target="_blank" rel="noopener noreferrer"
+                    style="text-decoration: none;">
+                    <div class="btn-discord"
+                        style="width: 41.66px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 0.75rem;">
+                        <svg viewBox="0 -28.5 256 256" style="width: 24px; height: 24px;" fill="white">
+                            <path
+                                d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z">
+                            </path>
+                        </svg>
+                    </div>
+                </a>
+                <a id="sd-store-header" href="https://tienda.survivaldub.com" style="text-decoration: none;">
+                    <button class="btn-yellow-small"
+                        style="width: 124px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 0.625rem;">
+                        <span
+                            style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 17.33px; line-height: 8px; color: #47241C; text-transform: uppercase;">TIENDA</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        let lastHash = "";
+        function sync() {
+            const dLogo = document.querySelector('.logo-big') || document.querySelector('.logo-small');
+            if (dLogo && dLogo.src) {
+                const myLogos = document.querySelectorAll('.sd-dynamic-logo');
+                myLogos.forEach(img => { if (img.src !== dLogo.src) img.src = dLogo.src; });
+            }
+
+            const bh = document.querySelector('.b-header') || document.querySelector('.brand-header');
+            if (!bh) return;
+            const nav = bh.querySelector('nav');
+            const icons = bh.querySelector('.icons');
+            const tNav = document.getElementById('sd-dynamic-nav');
+            const tD = document.getElementById('sd-discord-header');
+            const tS = document.getElementById('sd-store-header');
+
+            const currentHash = (nav ? nav.innerHTML : '') + (icons ? icons.innerHTML : '');
+            if (currentHash === lastHash) return;
+            lastHash = currentHash;
+
+            if (nav && tNav) {
+                const links = nav.querySelectorAll('a');
+                if (links.length > 0) {
+                    const frag = document.createDocumentFragment();
+                    links.forEach(l => {
+                        const nl = l.cloneNode(true);
+                        nl.className = 'nav-link';
+                        frag.appendChild(nl);
+                    });
+                    tNav.innerHTML = '';
+                    tNav.appendChild(frag);
+                }
+            }
+            if (icons) {
+                icons.querySelectorAll('a').forEach(l => {
+                    const h = (l.getAttribute('href') || '').toLowerCase();
+                    if (h.includes('discord') && tD) tD.setAttribute('href', l.getAttribute('href'));
+                    else if ((h.includes('tienda') || h.includes('shop') || h.includes('store')) && tS) tS.setAttribute('href', l.getAttribute('href'));
+                });
+            }
+        }
+        const obs = new MutationObserver(sync);
+        obs.observe(document.body, { childList: true, subtree: true });
+        sync();
+        setInterval(sync, 4000);
+    })();
+</script>
