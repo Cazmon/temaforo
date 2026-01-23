@@ -1,7 +1,8 @@
 {
-  "name": "SurvivalDub Master Theme",
-  "authors": "Antigravity & SurvivalDub Team",
+  "name": "SurvivalDub Master V2.2 FINAL",
+  "authors": "Antigravity - SurvivalDub",
   "about_url": "https://survivaldub.com",
+  "version": "1.0.2",
   "license_url": "https://github.com/discourse/discourse-air/blob/main/LICENSE",
   "components": [
     "https://github.com/discourse/discourse-minimal-category-boxes.git",
