@@ -49,7 +49,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://foro.survivaldub.com/uploads/default/original/1X/fondo_paginas.webp');
+    background-image: url($background_image);
     background-size: cover;
     background-position: center bottom;
     background-attachment: fixed;
@@ -57,201 +57,15 @@ body::before {
     z-index: -1;
 }
 
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
+.w-full.fixed {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-@keyframes hero-float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-@keyframes hero-shadow {
-
-    0%,
-    100% {
-        transform: translateX(-50%) scale(1);
-        opacity: 0.2;
-    }
-
-    50% {
-        transform: translateX(-50%) scale(0.85);
-        opacity: 0.15;
-    }
-}
-
-@keyframes particle-rise {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.5;
-    }
-
-    90% {
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: translateY(-400px) translateX(20px);
-        opacity: 0;
-    }
-}
-
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-hero-float {
-    animation: hero-float 4s ease-in-out infinite;
-}
-
-.animate-hero-shadow {
-    animation: hero-shadow 4s ease-in-out infinite;
-}
-
-.note-animation {
-    opacity: 0;
-    animation: slideIn 0.6s ease-out forwards, float 3s ease-in-out infinite;
-}
-
-.note-1 {
-    animation-delay: 0.2s, 0.2s;
-}
-
-.note-2 {
-    animation-delay: 0.4s, 0.4s;
-}
-
-.note-3 {
-    animation-delay: 0.6s, 0.6s;
-}
-
-.note-4 {
-    animation-delay: 0.8s, 0.8s;
-}
-
-.note-5 {
-    animation-delay: 1s, 1s;
-}
-
-.note-6 {
-    animation-delay: 1.2s, 1.2s;
-}
-
-.particle-lime {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: #A855F7;
-    border-radius: 50%;
-    opacity: 0;
-    animation: particle-rise 6s ease-in-out infinite;
-}
-
-.particle-lime-1 {
-    left: 10%;
-    bottom: 0;
-    animation-delay: 0s;
-}
-
-.particle-lime-2 {
-    left: 25%;
-    bottom: 0;
-    animation-delay: 1s;
-}
-
-.particle-lime-3 {
-    left: 40%;
-    bottom: 0;
-    animation-delay: 2s;
-}
-
-.particle-lime-4 {
-    left: 55%;
-    bottom: 0;
-    animation-delay: 0.5s;
-}
-
-.particle-lime-5 {
-    left: 70%;
-    bottom: 0;
-    animation-delay: 1.5s;
-}
-
-.particle-lime-6 {
-    left: 85%;
-    bottom: 0;
-    animation-delay: 2.5s;
-}
-
-.particle-lime-7 {
-    left: 15%;
-    bottom: 0;
-    animation-delay: 3s;
-}
-
-.particle-lime-8 {
-    left: 45%;
-    bottom: 0;
-    animation-delay: 3.5s;
-}
-
-.particle-lime-9 {
-    left: 65%;
-    bottom: 0;
-    animation-delay: 4s;
-}
-
-.particle-lime-10 {
-    left: 80%;
-    bottom: 0;
-    animation-delay: 4.5s;
-}
-
-.gradient-text-pink {
-    background: linear-gradient(90deg, #FAB9F9, #FFA6FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 10px rgba(254, 175, 253, 0.5);
-}
-
-.btn-yellow {
-    background: linear-gradient(90deg, #FCD310, #FAC108);
-    box-shadow: 0 4px 0 #B33819, inset 0 4.21px 2.1px rgba(255, 255, 255, 0.4);
-    transition: all 0.3s ease;
-}
-
-.btn-yellow:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 0 #B33819, inset 0 4.21px 2.1px rgba(255, 255, 255, 0.4),
-        0 0 30px rgba(252, 211, 16, 0.6), 0 0 60px rgba(252, 211, 16, 0.4);
+.navbar-bg {
+    display: flex !important;
+    visibility: visible !important;
 }
 
 .btn-yellow-small {
@@ -262,22 +76,7 @@ body::before {
 
 .btn-yellow-small:hover {
     transform: scale(1.05);
-    box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4),
-        0 0 20px rgba(252, 211, 16, 0.6), 0 0 40px rgba(252, 211, 16, 0.4);
-}
-
-.btn-black-small {
-    background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
-    box-shadow: 0 2px 0 #000000, inset 0 2px 1px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    color: white;
-}
-
-.btn-black-small:hover {
-    transform: scale(1.05);
-    background: linear-gradient(90deg, #2a2a2a, #3a3a3a);
-    box-shadow: 0 2px 0 #000000, inset 0 2px 1px rgba(255, 255, 255, 0.2),
-        0 0 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4), 0 0 20px rgba(252, 211, 16, 0.6), 0 0 40px rgba(252, 211, 16, 0.4);
 }
 
 .btn-discord {
@@ -289,13 +88,7 @@ body::before {
 .btn-discord:hover {
     transform: scale(1.05);
     background-color: #9CA3FF;
-    box-shadow: 0 4px 20px rgba(129, 140, 248, 0.6), 0 2px 0 #4139C1,
-        inset 0 2px 1px rgba(255, 255, 255, 0.4);
-}
-
-.card-purple {
-    background: linear-gradient(150.3deg, #9248DC 9.41%, #54248D 85.07%);
-    box-shadow: 0 5px 0 5px #6A2FBB, inset 0 3px 3px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(129, 140, 248, 0.6), 0 2px 0 #4139C1, inset 0 2px 1px rgba(255, 255, 255, 0.4);
 }
 
 .navbar-gradient {
@@ -308,42 +101,6 @@ body::before {
 
 .footer-gradient {
     background: linear-gradient(180deg, #13013C, #000000);
-}
-
-.input-purple {
-    background-color: #2E1065;
-    box-shadow: 0 2px 0 0 #6A2FBB, inset 0 2px 0.19px 0 #2F1049;
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #13013C;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #6621A2;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #7C3AED;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.animate-marquee {
-    animation: scroll 20s linear infinite;
 }
 
 #main-outlet {
