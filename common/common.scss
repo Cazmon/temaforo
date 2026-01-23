@@ -162,14 +162,16 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 }
 
 // --- Sidebar de Administración (/admin) ---
-.admin-controls {
+.admin-controls,
+.sidebar-sections.admin-panel {
     background: var(--sd-glass-bg-dark) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--sd-glass-border);
-    border-radius: 20px;
-    padding: 1.5rem !important;
+    border-radius: 24px;
+    padding: 2rem 1.5rem !important;
     margin-top: 20px !important;
+    box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
 
     .nav-stacked {
         background: transparent !important;
@@ -201,14 +203,12 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 
 // Forzar transparencia en el área del sidebar de admin para quitar el gris
 .admin-controls,
-.admin-controls .nav-stacked {
+.admin-controls .nav-stacked,
+.sidebar-sections.admin-panel,
+.sidebar-sections.admin-panel .nav-stacked {
     background-color: transparent !important;
 }
 
-// Tarjeta principal de Administración (La que el usuario quiere ver)
-.admin-content {
-    // Hereda glassmorphism del bloque superior
-}
 
 // Reset de fondos decorativos de admin nativos
 .admin-main,
