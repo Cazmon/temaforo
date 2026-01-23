@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
+// --- Variables y Configuración ---
+:root {
+    --sd-purple-dark: #13013C;
+    --sd-purple-mid: #6621A2;
+    --sd-purple-light: #51299B;
+    --sd-yellow: #FCD310;
+    --sd-yellow-dark: #FAC108;
+    --sd-glass-bg: rgba(0, 0, 0, 0.65);
+    --sd-glass-border: rgba(255, 255, 255, 0.1);
+    --sd-glow-purple: rgba(102, 33, 162, 0.3);
+}
+
+// --- Animaciones ---
+@keyframes glass-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 40px -15px var(--sd-glow-purple);
+    }
+
+    50% {
+        box-shadow: 0 0 60px -10px var(--sd-glow-purple);
+    }
+}
+
 @keyframes float-particle {
 
     0%,
@@ -14,35 +39,14 @@
     }
 }
 
-@keyframes shine {
-    0% {
-        background-position: 200% 0px;
-    }
-
-    100% {
-        background-position: -200% 0px;
-    }
-}
-
-.animate-float-particle {
-    animation: float-particle 10s ease-in-out infinite;
-}
-
-:root {
-    --sd-purple-dark: #13013C;
-    --sd-purple-mid: #6621A2;
-    --sd-purple-light: #51299B;
-    --sd-yellow: #FCD310;
-    --sd-yellow-dark: #FAC108;
-}
-
+// --- Reset y Base ---
+html,
 body {
-    background-color: var(--sd-purple-dark);
-    font-family: 'Poppins', sans-serif;
+    background-color: var(--sd-purple-dark) !important;
+    font-family: 'Poppins', sans-serif !important;
     overflow-x: hidden;
 }
 
-/* Aplicar fondo a todo el foro (estándar Discourse) */
 body::before {
     content: "";
     position: fixed;
@@ -54,131 +58,235 @@ body::before {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    opacity: 0.25;
-    /* 75% transparencia */
-    z-index: -1;
+    opacity: 0.3; // Un poco más visible para lucir el webp
+    z-index: -2;
     pointer-events: none;
 }
 
-/* Transparencias globales para que el fondo sea visible en todas las secciones */
-html,
-body,
-#main-outlet-wrapper,
+// Capa de partículas sutiles
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, var(--sd-purple-dark) 100%);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+// Transparencias Globales para Estabilidad
 .discourse-container,
 .wrap,
 .full-width,
+#main-outlet-wrapper,
 .search-container,
-.user-profile-links {
+.user-profile-links,
+#main {
     background-color: transparent !important;
 }
 
-/* El fondo base del body debe ser el color oscuro de la marca */
-body {
-    background-color: var(--sd-purple-dark) !important;
+// --- Contenedor Principal (Glassmorphism) ---
+#main-outlet {
+    margin-top: 150px !important; // Espacio para navbar
+    margin-bottom: 50px !important;
+    background: var(--sd-glass-bg) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--sd-glass-border);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem !important;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: glass-glow 8s ease-in-out infinite;
+    position: relative;
+    overflow: visible;
+
+    // Línea de brillo superior tipo sd-next
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 20%;
+        right: 20%;
+        height: 1px;
+        background: gradient(linear, left top, right top, from(transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), to(transparent));
+        background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    }
 }
 
-/* Ocultar cabecera predeterminada de Discourse y Brand Header */
+// --- Sidebar (Gamer Style) ---
+.sidebar-wrapper {
+    margin-top: 150px !important;
+    background: transparent !important;
+}
+
+.sidebar-container {
+    background: rgba(19, 1, 60, 0.85) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--sd-glass-border);
+    border-radius: 24px;
+    padding: 2rem 1.25rem !important;
+    height: auto !important;
+    min-height: calc(100vh - 200px);
+    position: sticky;
+    top: 150px;
+    box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
+    margin-right: 20px;
+
+    // Reset de bordes de sección
+    .sidebar-section-header,
+    .sidebar-section-link-wrapper,
+    .sidebar-footer-wrapper {
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .sidebar-section-link-wrapper:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 12px;
+    }
+}
+
+// --- Listas de Temas y Categorías ---
+.topic-list,
+.category-list {
+    border-collapse: separate !important;
+    border-spacing: 0 10px !important;
+    background: transparent !important;
+    border: none !important;
+
+    thead th {
+        border: none !important;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    tr {
+        background: rgba(255, 255, 255, 0.03) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 12px;
+
+        td {
+            border: none !important;
+            padding: 15px !important;
+
+            &:first-child {
+                border-radius: 12px 0 0 12px;
+            }
+
+            &:last-child {
+                border-radius: 0 12px 12px 0;
+            }
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.07) !important;
+            transform: scale(1.01) translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 33, 162, 0.2);
+        }
+    }
+}
+
+// --- Posts dentro de Temas ---
+.topic-post {
+    border: none !important;
+    background: transparent !important;
+    margin-bottom: 20px;
+
+    .boxed.-boxed {
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid var(--sd-glass-border) !important;
+        border-radius: 20px;
+        padding: 10px;
+    }
+}
+
+.topic-avatar,
+.topic-body {
+    border-top: none !important;
+}
+
+// --- Botones (Estilo sd-next) ---
+.btn:not(.sd-dynamic-btn) {
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease !important;
+
+    &.btn-primary {
+        background: linear-gradient(90deg, #FCD310, #FAC108) !important;
+        color: #47241C !important;
+        box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4) !important;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 0 #B33819, 0 0 20px rgba(252, 211, 16, 0.4) !important;
+        }
+    }
+
+    &.btn-default {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: white !important;
+        border: 1px solid var(--sd-glass-border) !important;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+    }
+}
+
+// --- Modales y Popups ---
+.modal-inner-container {
+    background: var(--sd-purple-dark) !important;
+    border: 1px solid var(--sd-glass-border) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(30px);
+}
+
+// --- Scrollbar (Gamer Style) ---
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sd-purple-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sd-purple-mid);
+    border-radius: 10px;
+    border: 2px solid var(--sd-purple-dark);
+
+    &:hover {
+        background: var(--sd-purple-light);
+    }
+}
+
+// --- Ocultación de Elementos Nativos Solicitada ---
 .d-header,
-.b-header {
+.b-header,
+.w-full.fixed:not(.navbar-bg) {
     display: none !important;
 }
 
-.w-full.fixed {
-    display: none !important;
-}
-
+// Asegurar que nuestra navbar y footer sigan visibles
 .navbar-bg {
     display: flex !important;
     visibility: visible !important;
 }
 
-.btn-yellow-small {
-    background: linear-gradient(90deg, #FCD310, #FAC108);
-    box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4);
-    transition: all 0.3s ease;
-}
-
-.btn-yellow-small:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4), 0 0 20px rgba(252, 211, 16, 0.6), 0 0 40px rgba(252, 211, 16, 0.4);
-}
-
-.btn-discord {
-    background-color: #818CF8;
-    box-shadow: 0 2px 0 #4139C1, inset 0 2px 1px rgba(255, 255, 255, 0.4);
-    transition: all 0.3s ease;
-}
-
-.btn-discord:hover {
-    transform: scale(1.05);
-    background-color: #9CA3FF;
-    box-shadow: 0 4px 20px rgba(129, 140, 248, 0.6), 0 2px 0 #4139C1, inset 0 2px 1px rgba(255, 255, 255, 0.4);
-}
-
-.navbar-gradient {
-    background: linear-gradient(180deg, #6621A2, #51299B);
-}
-
-.navbar-bg {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-.footer-gradient {
-    background: linear-gradient(180deg, #13013C, #000000);
-}
-
-#main-outlet {
-    margin-top: 150px !important;
-    background: rgba(19, 1, 60, 0.45) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-    padding: 2.5rem !important;
-    max-width: 1240px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.sidebar-wrapper {
-    margin-top: 150px !important;
-    background: transparent !important;
-    border: none !important;
-}
-
-.sidebar-wrapper::before,
-.sidebar-wrapper::after {
-    display: none !important;
-    content: none !important;
-}
-
-.sidebar-container {
-    background: rgba(19, 1, 60, 0.9) !important;
-    /* Más opaco para legibilidad */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0 24px 24px 0;
-    padding: 2rem 1.25rem !important;
-    height: auto !important;
-    min-height: calc(100vh - 150px);
-    position: sticky;
-    top: 150px;
-    /* Alineada con #main-outlet */
-    overflow: visible !important;
-    box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
-}
-
-.sidebar-container::before,
-.sidebar-container::after {
-    display: none !important;
-    content: none !important;
-}
-
-.sidebar-footer-wrapper,
-.sidebar-section-header,
-.sidebar-section-link-wrapper {
-    background: transparent !important;
-    border: none !important;
+[id^="sd-"] {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
