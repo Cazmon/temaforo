@@ -42,6 +42,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Aplicar fondo a todo el foro (estándar Discourse) */
 body::before {
     content: "";
     position: fixed;
@@ -59,16 +60,21 @@ body::before {
     pointer-events: none;
 }
 
-/* Asegurar que el fondo sea visible a través de los contenedores principales */
+/* Transparencias globales para que el fondo sea visible en todas las secciones */
 html,
-body {
-    background-color: var(--sd-purple-dark) !important;
-}
-
+body,
+#main-outlet-wrapper,
 .discourse-container,
 .wrap,
-.full-width {
+.full-width,
+.search-container,
+.user-profile-links {
     background-color: transparent !important;
+}
+
+/* El fondo base del body debe ser el color oscuro de la marca */
+body {
+    background-color: var(--sd-purple-dark) !important;
 }
 
 /* Ocultar cabecera predeterminada de Discourse y Brand Header */
