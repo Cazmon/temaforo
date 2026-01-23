@@ -23,10 +23,12 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   // Usando la ruta relativa del activo subido al tema
-  background-image: url($background-image); 
+  background-image: url($background_image);
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
@@ -35,7 +37,8 @@ body::before {
 }
 
 // 2. Layout y Visibilidad
-.sd-nav-wrapper, .sd-footer-wrapper {
+.sd-nav-wrapper,
+.sd-footer-wrapper {
   display: flex !important;
   visibility: visible !important;
   width: 100%;
@@ -43,13 +46,17 @@ body::before {
 
 .sd-nav-wrapper {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   margin-top: 1.5rem;
-  z-index: 1001; 
+  z-index: 1001;
   justify-content: center;
   pointer-events: none;
 }
-.sd-nav-wrapper > * { pointer-events: auto; }
+
+.sd-nav-wrapper>* {
+  pointer-events: auto;
+}
 
 // Evitar que la navbar tape el contenido
 #main-outlet {
@@ -71,7 +78,12 @@ body::before {
   margin-top: 150px !important; // Igual que el contenido
   background: transparent !important;
   border: none !important;
-  &::before, &::after { display: none !important; content: none !important; }
+
+  &::before,
+  &::after {
+    display: none !important;
+    content: none !important;
+  }
 }
 
 .sidebar-container {
@@ -86,19 +98,35 @@ body::before {
   top: 150px;
   overflow: visible !important;
   box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
-  
+
   // Eliminar degradados negros y artefactos
-  &::before, &::after { display: none !important; content: none !important; }
-  
-  .sidebar-footer-wrapper, .sidebar-section-header, .sidebar-section-link-wrapper {
+  &::before,
+  &::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .sidebar-footer-wrapper,
+  .sidebar-section-header,
+  .sidebar-section-link-wrapper {
     background: transparent !important;
     border: none !important;
-    &::before, &::after { display: none !important; content: none !important; }
+
+    &::before,
+    &::after {
+      display: none !important;
+      content: none !important;
+    }
   }
 }
 
 // 4. Glassmorphism Interno (AirTheme Box Style)
-.topic-list, .topic-body, .user-main .about, .directory table, .user-content, .card {
+.topic-list,
+.topic-body,
+.user-main .about,
+.directory table,
+.user-content,
+.card {
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -121,6 +149,7 @@ body::before {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+
   span {
     font-weight: 800 !important;
     font-size: 17.33px !important; // Tamaño Next.js
@@ -135,7 +164,10 @@ body::before {
   box-shadow: 0 4px 0 #4139C1, inset 0 2px 1px rgba(255, 255, 255, 0.4) !important;
   border-radius: 12px;
   border: none;
-  &:hover { transform: scale(1.05); }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .nav-link {
@@ -146,17 +178,36 @@ body::before {
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4) !important;
   text-decoration: none !important;
   position: relative;
+
   &::after {
-    content: ''; position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 3px; background-color: #fde047;
-    border-radius: 9999px; transition: width 0.2s;
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #fde047;
+    border-radius: 9999px;
+    transition: width 0.2s;
   }
-  &:hover::after { width: 100%; }
+
+  &:hover::after {
+    width: 100%;
+  }
 }
 
 // 6. Native Ocultar
 header.d-header {
-  background: transparent !important; box-shadow: none !important; border: none !important;
-  .contents { display: none !important; }
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+
+  .contents {
+    display: none !important;
+  }
 }
-.brand-header, .b-header { display: none !important; }
+
+.brand-header,
+.b-header {
+  display: none !important;
+}
