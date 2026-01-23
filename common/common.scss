@@ -96,8 +96,7 @@ body::after {
 body:not(.admin-interface):not(.admin-body) #main-outlet,
 .primary,
 .post-list.user-stream,
-.d-page-header,
-#main-container {
+.d-page-header {
     margin-top: 150px !important; // Espacio para navbar
     margin-bottom: 50px !important;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent), var(--sd-glass-bg) !important;
@@ -400,7 +399,8 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 .admin-body #main-outlet,
 .admin-interface #main-outlet-wrapper,
 .admin-body #main-outlet-wrapper,
-.nav-pills {
+.nav-pills,
+#main-container {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
