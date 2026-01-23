@@ -7,7 +7,7 @@ export default {
   initialize() {
     withPluginApi((api) => {
       api.modifyClass("component:edit-category-general", {
-        pluginId: "discourse-air",
+        pluginId: "survivaldub-master",
 
         didInsertElement() {
           this._super(...arguments);
