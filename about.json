@@ -1,3 +1,8 @@
 {
-  "name": "SURVIVALDUB-TEST-VACIO"
+  "name": "SurvivalDub Master",
+  "version": "1.0.0",
+  "authors": "Cazmon",
+  "assets": {
+    "background_image": "assets/fondo_paginas.webp"
+  }
 }
