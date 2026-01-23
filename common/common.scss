@@ -59,10 +59,13 @@ body::before {
     pointer-events: none;
 }
 
+/* Ocultar cabecera predeterminada de Discourse */
+.d-header {
+    display: none !important;
+}
+
 .w-full.fixed {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: none !important;
 }
 
 .navbar-bg {
