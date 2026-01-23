@@ -59,6 +59,18 @@ body::before {
     pointer-events: none;
 }
 
+/* Asegurar que el fondo sea visible a través de los contenedores principales */
+html,
+body {
+    background-color: var(--sd-purple-dark) !important;
+}
+
+#main,
+.ember-view,
+.full-width {
+    background-color: transparent !important;
+}
+
 /* Ocultar cabecera predeterminada de Discourse */
 .d-header {
     display: none !important;
