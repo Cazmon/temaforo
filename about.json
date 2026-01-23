@@ -3,10 +3,7 @@
   "authors": "Cazmon-SurvivalDub",
   "version": "2.0.0",
   "license_url": "https://github.com/discourse/discourse-air/blob/main/LICENSE",
-  "components": [
-    "https://github.com/discourse/discourse-minimal-category-boxes.git",
-    "https://github.com/discourse/discourse-clickable-topic.git"
-  ],
+  "components": [],
   "modifiers": {
     "serialize_topic_excerpts": true
   },
