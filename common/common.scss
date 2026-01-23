@@ -93,11 +93,10 @@ body::after {
 }
 
 // --- Contenedores con Glassmorphism ---
-#main-outlet:not(.admin-container),
+body:not(.admin-interface):not(.admin-body) #main-outlet,
 .primary,
 .post-list.user-stream,
-.d-page-header,
-.version-checks {
+.d-page-header {
     margin-top: 150px !important; // Espacio para navbar
     margin-bottom: 50px !important;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent), var(--sd-glass-bg) !important;
@@ -212,9 +211,8 @@ body::after {
     border: none !important;
 }
 
-// Tarjeta principal de Administración (la que queda tras quitar las 2 exteriores)
-.admin-contents,
-.admin-content {
+// Tarjeta principal de Administración
+.admin-contents {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent), var(--sd-glass-bg) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -224,6 +222,18 @@ body::after {
     padding: 1.5rem !important;
     margin-top: 10px !important;
     animation: glass-glow 8s ease-in-out infinite;
+}
+
+// Eliminar cajas redundantes internas y el contenedor .row
+.admin-content,
+.admin-main .row,
+.admin-container .row {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 // Estilo para las tarjetas interiores reales (sutil para no sobrecargar si están dentro de .admin-contents)
@@ -380,14 +390,15 @@ body::after {
 // Reajuste de margen para sub-contenedores
 .primary,
 .post-list.user-stream,
-.d-page-header,
-.version-checks {
+.d-page-header {
     margin-top: 20px !important;
 }
 
 // Asegurar que en admin el #main-outlet sea transparente para evitar doble caja
 .admin-interface #main-outlet,
-.admin-body #main-outlet {
+.admin-body #main-outlet,
+.admin-interface #main-outlet-wrapper,
+.admin-body #main-outlet-wrapper {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
