@@ -93,13 +93,11 @@ body::after {
 }
 
 // --- Contenedores con Glassmorphism ---
-#main-outlet,
+#main-outlet:not(.admin-container),
 .primary,
 .post-list.user-stream,
 .d-page-header,
-.version-checks,
-.admin-contents,
-.admin-content {
+.version-checks {
     margin-top: 150px !important; // Espacio para navbar
     margin-bottom: 50px !important;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent), var(--sd-glass-bg) !important;
@@ -161,6 +159,75 @@ body::after {
         background: rgba(255, 255, 255, 0.05) !important;
         border-radius: 12px;
     }
+}
+
+// --- Sidebar de Administración (/admin) ---
+.admin-controls {
+    background: var(--sd-glass-bg-dark) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--sd-glass-border);
+    border-radius: 20px;
+    padding: 1.5rem !important;
+    margin-top: 20px !important;
+
+    .nav-stacked {
+        background: transparent !important;
+
+        li {
+            background: transparent !important;
+            border: none !important;
+
+            a {
+                color: rgba(255, 255, 255, 0.7) !important;
+                border-radius: 8px;
+                padding: 10px 15px !important;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.05) !important;
+                    color: white !important;
+                }
+
+                &.active {
+                    background: var(--sd-purple-mid) !important;
+                    color: white !important;
+                    box-shadow: 0 0 15px var(--sd-glow-purple);
+                }
+            }
+        }
+    }
+}
+
+// Reset de fondos decorativos de admin nativos
+.admin-main,
+.admin-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+// Tarjetas internas de Administración (quitar glass redundante)
+.admin-contents,
+.admin-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    animation: none !important;
+}
+
+// Estilo para las tarjetas interiores reales
+.admin-report,
+.admin-main-nav,
+.dashboard-stats,
+.admin-box,
+.section-edit {
+    background: var(--sd-glass-bg) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--sd-glass-border);
+    border-radius: 16px;
+    padding: 1.5rem !important;
+    margin-bottom: 20px !important;
 }
 
 // --- Listas de Temas y Categorías ---
@@ -305,8 +372,16 @@ body::after {
 .primary,
 .post-list.user-stream,
 .d-page-header,
-.version-checks,
-.admin-contents,
-.admin-content {
+.version-checks {
     margin-top: 20px !important;
+}
+
+// Asegurar que en admin el #main-outlet sea transparente para evitar doble caja
+.admin-interface #main-outlet,
+.admin-body #main-outlet {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    animation: none !important;
 }
