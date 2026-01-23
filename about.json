@@ -1,8 +1,7 @@
 {
-  "name": "SurvivalDub Master V2.2 FINAL",
-  "authors": "Antigravity - SurvivalDub",
-  "about_url": "https://survivaldub.com",
-  "version": "1.0.2",
+  "name": "SurvivalDub Master V3.0",
+  "authors": "Cazmon-SurvivalDub",
+  "version": "1.0.3",
   "license_url": "https://github.com/discourse/discourse-air/blob/main/LICENSE",
   "components": [
     "https://github.com/discourse/discourse-minimal-category-boxes.git",
