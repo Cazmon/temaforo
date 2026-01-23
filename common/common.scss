@@ -49,7 +49,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: image-url("fondo_paginas.webp");
+    background-image: url('assets/fondo_paginas.webp');
     background-size: cover;
     background-position: center bottom;
     background-attachment: fixed;
