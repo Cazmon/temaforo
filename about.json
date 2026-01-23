@@ -1,7 +1,10 @@
 {
   "name": "SurvivalDub Master",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": "Cazmon",
   "about_url": "https://survivaldub.com",
-  "license_url": "https://github.com/Cazmon/temaforo/blob/main/LICENSE"
+  "license_url": "https://github.com/Cazmon/temaforo/blob/main/LICENSE",
+  "assets": {
+    "background_image": "assets/fondo_paginas.webp"
+  }
 }
