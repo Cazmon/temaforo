@@ -179,6 +179,7 @@ body::after {
             border: none !important;
 
             a {
+                background: transparent !important;
                 color: rgba(255, 255, 255, 0.7) !important;
                 border-radius: 8px;
                 padding: 10px 15px !important;
@@ -198,6 +199,12 @@ body::after {
     }
 }
 
+// Forzar transparencia en el área del sidebar de admin para quitar el gris
+.admin-controls,
+.admin-controls .nav-stacked {
+    background-color: transparent !important;
+}
+
 // Reset de fondos decorativos de admin nativos
 .admin-main,
 .admin-container {
@@ -205,29 +212,31 @@ body::after {
     border: none !important;
 }
 
-// Tarjetas internas de Administración (quitar glass redundante)
+// Tarjeta principal de Administración (la que queda tras quitar las 2 exteriores)
 .admin-contents,
 .admin-content {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin-top: 0 !important;
-    padding: 0 !important;
-    animation: none !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent), var(--sd-glass-bg) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--sd-glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    padding: 1.5rem !important;
+    margin-top: 10px !important;
+    animation: glass-glow 8s ease-in-out infinite;
 }
 
-// Estilo para las tarjetas interiores reales
+// Estilo para las tarjetas interiores reales (sutil para no sobrecargar si están dentro de .admin-contents)
 .admin-report,
 .admin-main-nav,
 .dashboard-stats,
 .admin-box,
 .section-edit {
-    background: var(--sd-glass-bg) !important;
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--sd-glass-border);
-    border-radius: 16px;
-    padding: 1.5rem !important;
-    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem !important;
+    margin-bottom: 15px !important;
 }
 
 // --- Listas de Temas y Categorías ---
