@@ -1,11 +1,11 @@
-// SurvivalDub Discourse Theme - MASTER STYLES 
+// SurvivalDub Discourse Theme - MASTER STYLES (Final 1:1)
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 :root {
   --sd-purple-dark: #13013C;
   --sd-purple-mid: #6621A2;
   --sd-purple-light: #51299B;
-  --sd-purple-sidebar: rgba(19, 1, 60, 0.4);
+  --sd-purple-sidebar: rgba(19, 1, 60, 0.4); // 40% opaco
   --sd-yellow: #FCD310;
   --sd-yellow-dark: #FAC108;
   --sd-discord: #818CF8;
@@ -14,7 +14,7 @@
   --font-family: 'Poppins', sans-serif;
 }
 
-// 1. Base y Fondos (Transparencia 75%)
+// 1. Fondos y Base (75% Transparencia en el fondo solicitado)
 body {
   background-color: var(--sd-purple-dark) !important;
   font-family: var(--font-family) !important;
@@ -23,21 +23,19 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url($background-image);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  // Usando la ruta relativa del activo subido al tema
+  background-image: url($background-image); 
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
-  opacity: 0.25;
+  opacity: 0.25; // 75% transparencia
   z-index: -1;
 }
 
-// 2. Wrappers Visibilidad
-.sd-nav-wrapper,
-.sd-footer-wrapper {
+// 2. Layout y Visibilidad
+.sd-nav-wrapper, .sd-footer-wrapper {
   display: flex !important;
   visibility: visible !important;
   width: 100%;
@@ -45,88 +43,76 @@ body::before {
 
 .sd-nav-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   margin-top: 1.5rem;
-  z-index: 1001;
+  z-index: 1001; 
   justify-content: center;
   pointer-events: none;
 }
+.sd-nav-wrapper > * { pointer-events: auto; }
 
-.sd-nav-wrapper>* {
-  pointer-events: auto;
-}
-
-// 3. Sidebar (Limpia y Alineada)
-.sidebar-wrapper {
-  margin-top: 130px !important;
-  background: transparent !important;
-  border: none !important;
-
-  &::before,
-  &::after {
-    display: none !important;
-    content: none !important;
-  }
-}
-
-.sidebar-container {
-  background: var(--sd-purple-sidebar) !important;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0 24px 24px 0;
-  padding: 2rem 1.25rem !important;
-  height: auto !important;
-  min-height: calc(100vh - 130px);
-  position: sticky;
-  top: 130px;
-  overflow: visible !important;
-
-  // Limpieza Discourse
-  .sidebar-footer-wrapper,
-  .sidebar-section-header,
-  .sidebar-section-link-wrapper {
-    background: transparent !important;
-    border: none !important;
-
-    &::before,
-    &::after {
-      display: none !important;
-      content: none !important;
-    }
-  }
-}
-
-// 4. Content (Glassmorphism Next.js)
+// Evitar que la navbar tape el contenido
 #main-outlet {
+  margin-top: 150px !important; // Bajado para dar aire a la navbar
   background: rgba(19, 1, 60, 0.45) !important;
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-  margin-top: 130px !important;
   padding: 2.5rem !important;
   max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.topic-list,
-.topic-body,
-.user-main .about,
-.directory table,
-.user-content,
-.card {
+// 3. SideBar (Alineada con el contenido y sin scroll)
+.sidebar-wrapper {
+  margin-top: 150px !important; // Igual que el contenido
+  background: transparent !important;
+  border: none !important;
+  &::before, &::after { display: none !important; content: none !important; }
+}
+
+.sidebar-container {
+  background: var(--sd-purple-sidebar) !important;
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 24px 24px 0;
+  padding: 2rem 1.25rem !important;
+  height: auto !important;
+  min-height: calc(100vh - 150px); // Crecimiento dinámico
+  position: sticky;
+  top: 150px;
+  overflow: visible !important;
+  box-shadow: 10px 0 32px rgba(0, 0, 0, 0.4);
+  
+  // Eliminar degradados negros y artefactos
+  &::before, &::after { display: none !important; content: none !important; }
+  
+  .sidebar-footer-wrapper, .sidebar-section-header, .sidebar-section-link-wrapper {
+    background: transparent !important;
+    border: none !important;
+    &::before, &::after { display: none !important; content: none !important; }
+  }
+}
+
+// 4. Glassmorphism Interno (AirTheme Box Style)
+.topic-list, .topic-body, .user-main .about, .directory table, .user-content, .card {
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(10px);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-// 5. Botones y Nav-links Fieles
+// 5. Botones y Elementos Visuales 1:1
 .navbar-gradient-exact {
   background: linear-gradient(180deg, var(--purple-800) 0%, var(--violet-900) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-gradient-original {
+  background: linear-gradient(180deg, #13013C 0%, #000000 100%) !important;
 }
 
 .btn-yellow-small {
@@ -135,10 +121,9 @@ body::before {
   border-radius: 10px;
   border: none;
   cursor: pointer;
-
   span {
     font-weight: 800 !important;
-    font-size: 17.33px !important;
+    font-size: 17.33px !important; // Tamaño Next.js
     color: #47241C !important;
     text-transform: uppercase !important;
     font-family: var(--font-family) !important;
@@ -147,9 +132,10 @@ body::before {
 
 .btn-discord {
   background-color: var(--sd-discord) !important;
-  box-shadow: 0 2px 0 #4139C1, inset 0 2px 1px rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 0 #4139C1, inset 0 2px 1px rgba(255, 255, 255, 0.4) !important;
   border-radius: 12px;
   border: none;
+  &:hover { transform: scale(1.05); }
 }
 
 .nav-link {
@@ -160,36 +146,17 @@ body::before {
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4) !important;
   text-decoration: none !important;
   position: relative;
-
   &::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background-color: #fde047;
-    border-radius: 9999px;
-    transition: width 0.2s;
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 3px; background-color: #fde047;
+    border-radius: 9999px; transition: width 0.2s;
   }
-
-  &:hover::after {
-    width: 100%;
-  }
+  &:hover::after { width: 100%; }
 }
 
-// 6. Ocultar Originales
+// 6. Native Ocultar
 header.d-header {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-
-  .contents {
-    display: none !important;
-  }
+  background: transparent !important; box-shadow: none !important; border: none !important;
+  .contents { display: none !important; }
 }
-
-.brand-header,
-.b-header {
-  display: none !important;
-}
+.brand-header, .b-header { display: none !important; }
