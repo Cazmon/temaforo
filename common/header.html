@@ -74,6 +74,8 @@
                 if (p < 1) requestAnimationFrame(step);
             }
             requestAnimationFrame(step);
+            // En pestañas ocultas requestAnimationFrame no corre: aseguramos el valor final igualmente.
+            setTimeout(() => { el.textContent = n; }, dur + 150);
         }
         function sdFetchPlayers(el, animate) {
             fetch('https://api.mcstatus.io/v2/status/java/' + SD_IP)
