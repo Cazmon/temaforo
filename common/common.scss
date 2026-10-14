@@ -545,3 +545,94 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
 }
+
+// =====================================================================
+// Móvil/tablet: el navbar del tema tenía 1240 px fijos y se salía de la
+// pantalla (sin logo visible). Aquí se vuelve responsive: logo + iconos
+// + TIENDA arriba y los enlaces en una fila que se desplaza.
+// =====================================================================
+@media (max-width: 1100px) {
+    .navbar-bg {
+        width: calc(100% - 24px) !important;
+        max-width: none !important;
+        left: 12px !important;
+        transform: none !important;
+        flex-wrap: wrap !important;
+        padding: 0.6rem 0.75rem !important;
+        margin-top: 12px !important;
+        row-gap: 0.4rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .navbar-bg > div {
+        display: contents !important;
+    }
+
+    .navbar-bg .sd-dynamic-logo {
+        height: 34px !important;
+    }
+
+    .navbar-bg #sd-dynamic-nav {
+        order: 3;
+        flex: 0 0 100%;
+        overflow-x: auto;
+        gap: 1.1rem !important;
+        padding: 2px 4px 6px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .navbar-bg #sd-dynamic-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .navbar-bg #sd-dynamic-nav a {
+        font-size: 13px !important;
+        white-space: nowrap;
+    }
+
+    .navbar-bg > div > div:last-child {
+        order: 2;
+        margin-left: auto;
+        gap: 0.6rem !important;
+    }
+
+    #sd-store-header button {
+        width: 92px !important;
+    }
+
+    #sd-store-header button span {
+        font-size: 14px !important;
+    }
+
+    body:not(.admin-interface):not(.admin-body) #main-outlet {
+        padding: 1rem !important;
+        margin-left: 12px !important;
+        margin-right: 12px !important;
+        max-width: calc(100vw - 24px) !important;
+        box-sizing: border-box !important;
+        margin-top: 130px !important;
+        overflow-x: auto !important;
+    }
+
+    .primary,
+    .post-list.user-stream,
+    .d-page-header,
+    .admin-content {
+        padding: 0.75rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: 16px !important;
+        animation: none !important;
+    }
+
+    #ip-footer-banner {
+        height: auto !important;
+        flex-wrap: wrap !important;
+        padding: 12px 14px !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+    }
+}
