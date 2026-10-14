@@ -60,7 +60,71 @@
 <script>
     (function () {
         let lastHash = "";
+
+        // El pie de Discourse se renderiza con Ember y descarta las etiquetas <script>, asi que la
+        // logica del cartel de la IP (copiar + contador) vive aqui, en el script de la cabecera.
+        const SD_IP = "mc.survivaldub.com";
+        function sdCountUp(el, n) {
+            let start = null;
+            const dur = 1500;
+            function step(ts) {
+                if (start === null) start = ts;
+                const p = Math.min((ts - start) / dur, 1);
+                el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3)));
+                if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+        function sdFetchPlayers(el, animate) {
+            fetch('https://api.mcstatus.io/v2/status/java/' + SD_IP)
+                .then(r => r.ok ? r.json() : null)
+                .then(d => {
+                    if (!d || !d.online) return;
+                    const n = (d.players && d.players.online) || 0;
+                    if (animate) sdCountUp(el, n); else el.textContent = n;
+                })
+                .catch(() => { });
+        }
+        function ensureFooterBanner() {
+            const banner = document.getElementById('ip-footer-banner');
+            if (!banner || banner.dataset.sdBound) return;
+            banner.dataset.sdBound = '1';
+
+            let busy = false;
+            function copy() {
+                if (busy) return;
+                busy = true;
+                try { navigator.clipboard.writeText(SD_IP); } catch (e) { }
+                const t = document.getElementById('ip-text-val');
+                const sub = document.getElementById('count-val');
+                const oldSub = sub.innerHTML;
+                t.textContent = '¡IP COPIADA!';
+                t.style.color = '#57F287';
+                sub.textContent = '¡TE ESPERAMOS DENTRO!';
+                sub.style.color = '#FFFFFF';
+                setTimeout(() => {
+                    t.textContent = SD_IP;
+                    t.style.color = '';
+                    sub.innerHTML = oldSub;
+                    sub.style.color = '';
+                    busy = false;
+                }, 3000);
+            }
+            banner.addEventListener('click', copy);
+            banner.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy(); }
+            });
+
+            const first = document.getElementById('sd-ip-count');
+            if (first) sdFetchPlayers(first, true);
+            setInterval(() => {
+                const el = document.getElementById('sd-ip-count');
+                if (el) sdFetchPlayers(el, false);
+            }, 120000);
+        }
+
         function sync() {
+            ensureFooterBanner();
             const dLogo = document.querySelector('.logo-big') || document.querySelector('.logo-small') || document.querySelector('#site-logo');
             if (dLogo && dLogo.src) {
                 // Discourse tiene como hostname "localhost" y su logo sale como https://localhost/uploads/...

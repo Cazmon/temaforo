@@ -121,58 +121,6 @@
 </div>
 
 <script>
-    function copyIPFooter() {
-        if (window.__sdIpBusy) return;
-        window.__sdIpBusy = true;
-        const ip = "mc.survivaldub.com";
-        try { navigator.clipboard.writeText(ip); } catch (e) { }
-        const t = document.getElementById('ip-text-val');
-        const s = document.getElementById('count-val');
-        const oS = s.innerHTML;
-        t.textContent = "¡IP COPIADA!";
-        t.style.color = "#57F287";
-        s.textContent = "¡TE ESPERAMOS DENTRO!";
-        s.style.color = "#FFFFFF";
-        setTimeout(() => {
-            t.textContent = ip;
-            t.style.color = "";
-            s.innerHTML = oS;
-            s.style.color = "";
-            window.__sdIpBusy = false;
-        }, 3000);
-    }
-
-    function countUpTo(n) {
-        const el = document.getElementById('sd-ip-count');
-        if (!el) return;
-        let start = null;
-        const dur = 1500;
-        function step(ts) {
-            if (start === null) start = ts;
-            const p = Math.min((ts - start) / dur, 1);
-            el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3)));
-            if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    }
-
-    // Mismo origen de datos que el pie de survivaldub.com
-    function updatePlayerCount() {
-        fetch('https://api.mcstatus.io/v2/status/java/mc.survivaldub.com')
-            .then(r => r.ok ? r.json() : null)
-            .then(d => { if (d && d.online) countUpTo((d.players && d.players.online) || 0); })
-            .catch(() => { });
-    }
-
-    (function () {
-        const banner = document.getElementById('ip-footer-banner');
-        if (!banner) return;
-        banner.addEventListener('click', copyIPFooter);
-        banner.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyIPFooter(); }
-        });
-    })();
-
     function syncFooterLinks() {
         const bh = document.querySelector('.b-header') || document.querySelector('.brand-header');
         if (!bh) return;
@@ -208,8 +156,6 @@
         }
     }
 
-    updatePlayerCount();
     syncFooterLinks();
-    setInterval(updatePlayerCount, 120000);
     setInterval(syncFooterLinks, 5000);
 </script>
