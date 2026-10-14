@@ -2,15 +2,17 @@
 
 // --- Variables y Configuración ---
 :root {
-    --sd-purple-dark: #13013C;
-    --sd-purple-mid: #6621A2;
-    --sd-purple-light: #51299B;
-    --sd-yellow: #FCD310;
-    --sd-yellow-dark: #FAC108;
-    --sd-glass-bg: rgba(0, 0, 0, 0.45);
-    --sd-glass-bg-dark: rgba(0, 0, 0, 0.65);
-    --sd-glass-border: rgba(255, 255, 255, 0.12);
-    --sd-glow-purple: rgba(102, 33, 162, 0.3);
+    --sd-purple-dark: #0D0F42;
+    --sd-purple-mid: #2C22A8;
+    --sd-purple-light: #161A74;
+    --sd-yellow: #FAC50A;
+    --sd-yellow-dark: #E1B109;
+    // Cristal igual que .glass-panel de survivaldub.com
+    --sd-glass-bg: linear-gradient(160deg, rgba(44, 34, 168, 0.28), rgba(13, 15, 66, 0.6));
+    --sd-glass-bg-dark: linear-gradient(160deg, rgba(44, 34, 168, 0.42), rgba(13, 15, 66, 0.75));
+    --sd-glass-border: rgba(255, 255, 255, 0.08);
+    --sd-glass-shadow: 0 8px 32px rgba(5, 4, 30, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --sd-glow-purple: rgba(44, 34, 168, 0.3);
 }
 
 // Estilos para iconos de Discourse en navbar personalizada
@@ -353,7 +355,7 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
         &:hover {
             background: rgba(255, 255, 255, 0.07) !important;
             transform: scale(1.01) translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 33, 162, 0.2);
+            box-shadow: 0 10px 30px rgba(44, 34, 168, 0.2);
         }
     }
 }
@@ -386,13 +388,13 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
     transition: all 0.3s ease !important;
 
     &.btn-primary {
-        background: linear-gradient(90deg, #FCD310, #FAC108) !important;
+        background: linear-gradient(90deg, #FAC50A, #E1B109) !important;
         color: #47241C !important;
         box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4) !important;
 
         &:hover {
             transform: scale(1.05);
-            box-shadow: 0 2px 0 #B33819, 0 0 20px rgba(252, 211, 16, 0.4) !important;
+            box-shadow: 0 2px 0 #B33819, 0 0 20px rgba(250, 197, 10, 0.4) !important;
         }
     }
 
@@ -486,4 +488,60 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
 // Ocultar contenedor vacío redundante
 #main-container {
     display: none !important;
+}
+
+// =====================================================================
+// Paleta índigo + cristal, igual que survivaldub.com (14-oct-2026).
+// El esquema "Dracula" de Discourse pinta con grises y lavanda; aquí se
+// sobreescriben sus variables para que enlaces, pestañas activas, hovers
+// y superficies sólidas usen el índigo del navbar. Va al final para ganar
+// a lo anterior (mismo :root, hoja posterior).
+// =====================================================================
+:root {
+    --secondary: #0D0F42;
+    --secondary-rgb: 13, 15, 66;
+    --header_background: #161A74;
+    --header_background-rgb: 22, 26, 116;
+    --primary-very-low: #14165A;
+    --primary-very-low-rgb: 20, 22, 90;
+    --primary-low: #1E2080;
+    --primary-low-rgb: 30, 32, 128;
+
+    --tertiary: #7C6DF5;
+    --tertiary-rgb: 124, 109, 245;
+    --tertiary-hover: #9186EE;
+    --tertiary-very-low: #1A1B66;
+    --tertiary-low: #2B2A8C;
+    --tertiary-medium: #4B43C4;
+    --tertiary-high: #9186EE;
+    --tertiary-or-tertiary-low: #2B2A8C;
+    --tertiary-low-or-tertiary-high: #9186EE;
+    --tertiary-med-or-tertiary: #7C6DF5;
+
+    --d-selected: #2B2A8C;
+    --d-hover: #2F2D96;
+}
+
+// Cuadros grandes, barras laterales y paneles de admin: mismo cristal y sombra
+body:not(.admin-interface):not(.admin-body) #main-outlet,
+.primary,
+.post-list.user-stream,
+.d-page-header,
+.admin-content,
+.sidebar-container,
+.admin-controls {
+    box-shadow: var(--sd-glass-shadow) !important;
+}
+
+.topic-list tr:hover,
+.category-list tr:hover {
+    border-color: rgba(124, 109, 245, 0.45);
+    box-shadow: 0 10px 30px rgba(44, 34, 168, 0.35) !important;
+}
+
+// Modales: cristal más opaco para que el texto se lea bien
+.modal-inner-container {
+    background: linear-gradient(160deg, rgba(44, 34, 168, 0.55), rgba(13, 15, 66, 0.94)) !important;
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
 }

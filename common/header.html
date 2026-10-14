@@ -1,10 +1,10 @@
 <!-- Desktop Navbar -->
 <div class="hidden lg:flex w-[1240px] p-4 relative bg-gradient-to-b from-purple-800 to-violet-900 navbar-bg rounded-2xl shadow-xl justify-start items-center gap-2.5 mx-auto mt-6 z-50 fixed left-1/2 -translate-x-1/2"
-    style="display: flex; width: 1240px; padding: 1rem; position: fixed; left: 50%; transform: translateX(-50%); background: linear-gradient(to bottom, #6b21a8, #4c1d95); border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); justify-content: flex-start; align-items: center; gap: 0.625rem; margin-top: 1.5rem; z-index: 50;">
+    style="display: flex; width: 1240px; padding: 1rem; position: fixed; left: 50%; transform: translateX(-50%); background: linear-gradient(to bottom, #2c22a8, #161a74); border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); justify-content: flex-start; align-items: center; gap: 0.625rem; margin-top: 1.5rem; z-index: 50;">
 
     <a href="/" class="relative z-10 group" style="position: relative; z-index: 10;">
         <div class="absolute w-16 h-16 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity"
-            style="position: absolute; width: 4rem; height: 4rem; left: 50%; top: 50%; transform: translate(-50%, -50%); background-color: #FACC15; border-radius: 9999px; filter: blur(24px); opacity: 0.6;">
+            style="position: absolute; width: 4rem; height: 4rem; left: 50%; top: 50%; transform: translate(-50%, -50%); background-color: #3B82F6; border-radius: 9999px; filter: blur(24px); opacity: 0.6;">
         </div>
         <img src="https://foro.survivaldub.com/uploads/default/original/1X/8f7a85436842199f12c0dfaf14157c147561ebb0.png"
             alt="Logo del Servidor"
@@ -48,7 +48,7 @@
             <a href="https://tienda.survivaldub.com" id="sd-store-header">
                 <button
                     class="btn-yellow-small flex flex-col justify-center items-center p-[10px] w-[124px] h-[38px] rounded-[10px]"
-                    style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; width: 124px; height: 38px; border-radius: 10px; background: linear-gradient(90deg, #FCD310, #FAC108); box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4); border: none; cursor: pointer; transition: all 0.3s ease;">
+                    style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; width: 124px; height: 38px; border-radius: 10px; background: linear-gradient(90deg, #FAC50A, #E1B109); box-shadow: 0 2px 0 #B33819, inset 0 2px 1px rgba(255, 255, 255, 0.4); border: none; cursor: pointer; transition: all 0.3s ease;">
                     <span class="font-bold text-[17.33px] leading-[8px] uppercase text-[#47241C]"
                         style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 17.33px; line-height: 8px; text-transform: uppercase; color: #47241C; text-shadow: none;">TIENDA</span>
                 </button>
@@ -63,8 +63,12 @@
         function sync() {
             const dLogo = document.querySelector('.logo-big') || document.querySelector('.logo-small');
             if (dLogo && dLogo.src) {
+                // Discourse tiene como hostname "localhost" y su logo sale como https://localhost/uploads/...
+                // (roto). Nos quedamos solo con la ruta para que se resuelva contra el dominio real.
+                let logoPath = dLogo.getAttribute('src') || dLogo.src;
+                try { const u = new URL(dLogo.src, location.origin); logoPath = u.pathname + u.search; } catch (e) { }
                 const myLogos = document.querySelectorAll('.sd-dynamic-logo');
-                myLogos.forEach(img => { if (img.src !== dLogo.src) img.src = dLogo.src; });
+                myLogos.forEach(img => { if (img.getAttribute('src') !== logoPath) img.setAttribute('src', logoPath); });
             }
 
             const bh = document.querySelector('.b-header') || document.querySelector('.brand-header');
