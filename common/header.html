@@ -61,7 +61,7 @@
     (function () {
         let lastHash = "";
         function sync() {
-            const dLogo = document.querySelector('.logo-big') || document.querySelector('.logo-small');
+            const dLogo = document.querySelector('.logo-big') || document.querySelector('.logo-small') || document.querySelector('#site-logo');
             if (dLogo && dLogo.src) {
                 // Discourse tiene como hostname "localhost" y su logo sale como https://localhost/uploads/...
                 // (roto). Nos quedamos solo con la ruta para que se resuelva contra el dominio real.
