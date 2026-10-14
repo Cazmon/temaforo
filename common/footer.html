@@ -15,47 +15,29 @@
                 style="display: flex; flex-direction: column; gap: 2rem; padding: 1rem 0;">
 
                 <!-- 1. Banner de IP -->
-                <div id="ip-footer-banner" onclick="copyIPFooter()"
-                    class="flex flex-row items-center justify-between px-6 gap-4 isolate w-full h-[80px] rounded-2xl navbar-gradient relative z-20 cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-2xl border border-white/10"
-                    style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0 1.5rem; gap: 1rem; width: 100%; height: 80px; border-radius: 1rem; background: linear-gradient(to bottom, #2c22a8, #161a74); position: relative; z-index: 20; cursor: pointer; transition: all 0.3s; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-
-                    <div class="flex flex-row items-center gap-5"
-                        style="display: flex; flex-direction: row; align-items: center; gap: 1.25rem;">
-                        <div class="relative w-[127px] h-[127px] flex items-center justify-center"
-                            style="position: relative; width: 127px; height: 127px; display: flex; align-items: center; justify-content: center;">
-                            <div class="absolute w-[50px] h-[50px] bg-[#3B82F6] blur-[20px] rounded-full opacity-60 z-0"
-                                style="position: absolute; width: 50px; height: 50px; background: #3B82F6; filter: blur(20px); border-radius: 9999px; opacity: 0.6; z-index: 0;">
-                            </div>
+                <div id="ip-footer-banner" class="sd-ip-banner" role="button" tabindex="0" aria-label="Copiar la IP del servidor">
+                    <div class="sd-ip-left">
+                        <div class="sd-ip-logo">
+                            <div class="sd-ip-logo-glow"></div>
                             <img src="https://foro.survivaldub.com/uploads/default/original/1X/8f7a85436842199f12c0dfaf14157c147561ebb0.png"
-                                alt="SurvivalDub Logo" class="sd-dynamic-logo relative z-20 object-contain"
-                                style="width: 100px; height: auto; position: relative; z-index: 20; object-fit: contain;" />
+                                alt="SurvivalDub Logo" class="sd-dynamic-logo" width="127" height="127" />
                         </div>
-
-                        <div class="flex flex-col justify-center"
-                            style="display: flex; flex-direction: column; justify-content: center;">
-                            <div id="ip-text-val"
-                                class="text-[20px] font-black uppercase transition-all duration-300 flex items-center gap-2 text-white tracking-wide"
-                                style="font-size: 20px; font-weight: 900; text-transform: uppercase; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; color: white; letter-spacing: 0.025em; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                                MC.SURVIVALDUB.COM
-                            </div>
-                            <div id="count-val" class="text-[#FEE75C] text-[11px] font-bold uppercase tracking-wider"
-                                style="color: #FEE75C; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em;">
-                                0 JUGADORES EN LÍNEA <span class="text-white/40" style="opacity: 0.4;">|</span> HAZ CLIC
-                                PARA COPIAR
-                            </div>
+                        <div class="sd-ip-info">
+                            <div id="ip-text-val" class="sd-ip-text">mc.survivaldub.com</div>
+                            <div id="count-val" class="sd-ip-subtext"><span id="sd-ip-count">0</span> JUGADORES EN LÍNEA <span class="sd-ip-sep">|</span> HAZ CLIC PARA COPIAR</div>
                         </div>
                     </div>
 
-                    <div class="md:flex flex-row gap-6 px-4 hidden items-center"
-                        style="display: flex; flex-direction: row; gap: 1.5rem; padding: 0 1rem; align-items: center;">
-                        <span class="text-white/40 text-[10px] font-bold uppercase tracking-widest mr-2"
-                            style="color: rgba(255,255,255,0.4); font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; margin-right: 0.5rem;">Síguenos</span>
-                        <a href="https://discord.gg/7QqcKdJw7n" target="_blank" rel="noopener noreferrer"
-                            class="hover:scale-110 transition-transform" style="transition: transform 0.2s;">
-                            <svg width="24" height="24" viewBox="0 -28.5 256 256" fill="white">
-                                <path
-                                    d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" />
-                            </svg>
+                    <div class="sd-social-links">
+                        <span class="sd-social-label">Síguenos</span>
+                        <a href="https://discord.gg/tDa8nBQ463" target="_blank" rel="noopener noreferrer" class="sd-social-link" aria-label="Discord">
+                            <svg width="24" height="24" viewBox="0 0 27 21" fill="none"><path d="M22.3592 2.44102C20.6686 1.63626 18.8907 1.09017 17.0253 0.802757C16.967 0.745275 16.9378 0.745275 16.9378 0.802757C16.7047 1.20514 16.4715 1.665 16.2383 2.18235C14.2563 1.83745 12.2743 1.83745 10.2923 2.18235C10.0592 1.72248 9.82599 1.26262 9.59281 0.802757C9.59281 0.745275 9.56366 0.745275 9.50537 0.802757C7.63997 1.09017 5.86201 1.63626 4.17148 2.44102C2.53926 4.8553 1.40253 7.32707 0.761295 9.85632C0.178357 12.1556 0.00347571 14.5987 0.236651 17.1854H0.324092C2.30608 18.6799 4.4921 19.7721 6.88215 20.4619C6.88215 20.4619 6.91129 20.4619 6.96959 20.4619C7.43594 19.7721 7.87314 19.0536 8.2812 18.3063C8.2812 18.2488 8.2812 18.2201 8.2812 18.2201H8.19376C7.49423 17.9327 6.82385 17.5878 6.18262 17.1854C6.12433 17.1854 6.12433 17.1566 6.18262 17.0992L6.61983 16.7543H6.70727C8.80584 17.7315 10.9919 18.2201 13.2653 18.2201C15.5388 18.2201 17.7248 17.7315 19.8234 16.7543C19.8817 16.7543 19.9108 16.7543 19.9108 16.7543L20.348 17.0992V17.1854C19.7068 17.5878 19.0073 17.9327 18.2494 18.2201V18.3063C18.6575 19.0536 19.0947 19.7721 19.5611 20.4619C19.6193 20.4619 19.6485 20.4619 19.6485 20.4619C22.0385 19.7721 24.2246 18.6799 26.2065 17.1854H26.294C26.8186 11.8395 25.507 6.92469 22.3592 2.44102ZM8.89328 14.2538C8.25205 14.2538 7.69826 13.9951 7.23191 13.4777C6.76556 12.9604 6.53238 12.3425 6.53238 11.6239C6.53238 10.9054 6.76556 10.2874 7.23191 9.77009C7.69826 9.25275 8.26663 8.99407 8.93701 8.99407C9.60738 8.99407 10.1612 9.25275 10.5984 9.77009C11.0356 10.2874 11.2542 10.9054 11.2542 11.6239C11.2542 12.3425 11.021 12.9604 10.5547 13.4777C10.0883 13.9951 9.53452 14.2538 8.89328 14.2538ZM17.6374 14.2538C16.9961 14.2538 16.4423 13.9951 15.976 13.4777C15.5096 12.9604 15.2765 12.3425 15.2765 11.6239C15.2765 10.9054 15.5096 10.2874 15.976 9.77009C16.4423 9.25275 16.9961 8.99407 17.6374 8.99407C18.2786 8.99407 18.8324 9.25275 19.2987 9.77009C19.7651 10.2874 19.9983 10.9054 19.9983 11.6239C19.9983 12.3425 19.7651 12.9604 19.2987 13.4777C18.8324 13.9951 18.2786 14.2538 17.6374 14.2538Z" fill="white" /></svg>
+                        </a>
+                        <a href="https://x.com/SurvivalDub" target="_blank" rel="noopener noreferrer" class="sd-social-link" aria-label="X">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404Z" fill="white" /></svg>
+                        </a>
+                        <a href="https://www.instagram.com/survivaldubmc" target="_blank" rel="noopener noreferrer" class="sd-social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 20 21" fill="none"><path d="M9.69218 0.862305C0.732808 0.862305 0.03125 1.56386 0.03125 10.5232V10.6984C0.03125 19.6578 0.732808 20.3593 9.69218 20.3593H9.86735C18.8267 20.3593 19.5283 19.6578 19.5283 10.6984V10.6108C19.5283 1.57005 18.8205 0.862305 9.77977 0.862305H9.69218ZM7.83006 2.81201H11.7295C17.154 2.81201 17.5786 3.23656 17.5786 8.66112V12.5605C17.5786 17.9851 17.154 18.4096 11.7295 18.4096H7.83006C2.4055 18.4096 1.98095 17.9851 1.98095 12.5605V8.66112C1.98095 3.23656 2.4055 2.81201 7.83006 2.81201ZM14.6512 4.76171C14.1126 4.76317 13.6777 5.20081 13.6792 5.73942C13.6806 6.27803 14.1183 6.71288 14.6569 6.71142C15.1955 6.70995 15.6303 6.27231 15.6289 5.73371C15.6274 5.1951 15.1898 4.76025 14.6512 4.76171ZM9.76834 5.73656C7.07678 5.7429 4.89917 7.93068 4.90551 10.6222C4.91185 13.3138 7.09963 15.4914 9.79119 15.4851C12.4828 15.4787 14.6604 13.291 14.654 10.5994C14.6477 7.90783 12.4599 5.73023 9.76834 5.73656ZM9.7731 7.68627C11.3879 7.68237 12.7004 8.98932 12.7043 10.6042C12.7077 12.219 11.4013 13.5315 9.78643 13.5354C8.17159 13.5393 6.85911 12.2328 6.85521 10.6175C6.85131 9.00264 8.15826 7.69017 9.7731 7.68627Z" fill="white" /></svg>
                         </a>
                     </div>
                 </div>
@@ -140,39 +122,56 @@
 
 <script>
     function copyIPFooter() {
-        const ip = "MC.SURVIVALDUB.COM";
-        if (navigator.clipboard) navigator.clipboard.writeText(ip);
+        if (window.__sdIpBusy) return;
+        window.__sdIpBusy = true;
+        const ip = "mc.survivaldub.com";
+        try { navigator.clipboard.writeText(ip); } catch (e) { }
         const t = document.getElementById('ip-text-val');
         const s = document.getElementById('count-val');
-        const oT = t.innerText;
         const oS = s.innerHTML;
-        t.innerText = "¡IP COPIADA!";
+        t.textContent = "¡IP COPIADA!";
         t.style.color = "#57F287";
-        s.innerText = "¡TE ESPERAMOS DENTRO!";
-        s.style.color = "white";
+        s.textContent = "¡TE ESPERAMOS DENTRO!";
+        s.style.color = "#FFFFFF";
         setTimeout(() => {
-            t.innerText = oT;
-            t.style.color = "white";
+            t.textContent = ip;
+            t.style.color = "";
             s.innerHTML = oS;
-            s.style.color = "#FEE75C";
-        }, 2500);
+            s.style.color = "";
+            window.__sdIpBusy = false;
+        }, 3000);
     }
 
-    function updatePlayerCount() {
-        const el = document.getElementById('count-val');
-        if (el && !el.innerHTML.includes('JUGADORES')) {
-            el.innerHTML = '0 JUGADORES EN LÍNEA <span style="opacity: 0.4;">|</span> HAZ CLIC PARA COPIAR';
+    function countUpTo(n) {
+        const el = document.getElementById('sd-ip-count');
+        if (!el) return;
+        let start = null;
+        const dur = 1500;
+        function step(ts) {
+            if (start === null) start = ts;
+            const p = Math.min((ts - start) / dur, 1);
+            el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(step);
         }
-        fetch('https://api.mcsrvstat.us/2/mc.survivaldub.com')
-            .then(r => r.json())
-            .then(d => {
-                const c = (d && d.online) ? d.players.online : 0;
-                if (el) el.innerHTML = c + ' JUGADORES EN LÍNEA <span style="opacity: 0.4;">|</span> HAZ CLIC PARA COPIAR';
-            })
-            .catch(() => {
-                if (el) el.innerHTML = '0 JUGADORES EN LÍNEA <span style="opacity: 0.4;">|</span> HAZ CLIC PARA COPIAR';
-            });
+        requestAnimationFrame(step);
     }
+
+    // Mismo origen de datos que el pie de survivaldub.com
+    function updatePlayerCount() {
+        fetch('https://api.mcstatus.io/v2/status/java/mc.survivaldub.com')
+            .then(r => r.ok ? r.json() : null)
+            .then(d => { if (d && d.online) countUpTo((d.players && d.players.online) || 0); })
+            .catch(() => { });
+    }
+
+    (function () {
+        const banner = document.getElementById('ip-footer-banner');
+        if (!banner) return;
+        banner.addEventListener('click', copyIPFooter);
+        banner.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyIPFooter(); }
+        });
+    })();
 
     function syncFooterLinks() {
         const bh = document.querySelector('.b-header') || document.querySelector('.brand-header');
@@ -211,6 +210,6 @@
 
     updatePlayerCount();
     syncFooterLinks();
-    setInterval(updatePlayerCount, 60000);
+    setInterval(updatePlayerCount, 120000);
     setInterval(syncFooterLinks, 5000);
 </script>

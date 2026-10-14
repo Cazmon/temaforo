@@ -626,13 +626,146 @@ body:not(.admin-interface):not(.admin-body) #main-outlet,
         animation: none !important;
     }
 
-    #ip-footer-banner {
-        height: auto !important;
-        flex-wrap: wrap !important;
-        padding: 12px 14px !important;
-        justify-content: center !important;
-        gap: 10px !important;
-        box-sizing: border-box !important;
-        max-width: 100% !important;
+}
+
+// =====================================================================
+// Cartel de la IP del pie: idéntico al de survivaldub.com (Footer.tsx)
+// =====================================================================
+.sd-ip-banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 24px;
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #2C22A8, #161A74);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    isolation: isolate;
+    position: relative;
+    z-index: 20;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: scale(1.01);
+    }
+}
+
+.sd-ip-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.sd-ip-logo {
+    position: relative;
+    width: 127px;
+    height: 127px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    img {
+        position: relative;
+        z-index: 20;
+        width: 127px;
+        height: 127px;
+        object-fit: contain;
+    }
+}
+
+.sd-ip-logo-glow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #3B82F6;
+    filter: blur(20px);
+    border-radius: 9999px;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.sd-ip-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sd-ip-text {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.sd-ip-subtext {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FEE75C;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sd-ip-sep {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.sd-social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 0 16px;
+    align-items: center;
+}
+
+.sd-social-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 8px;
+}
+
+.sd-social-link {
+    display: inline-flex;
+    transition: transform 0.15s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 767px) {
+    .sd-social-links {
+        display: none;
+    }
+}
+
+@media (max-width: 639px) {
+    .sd-ip-text {
+        font-size: 14px;
+    }
+
+    .sd-ip-subtext {
+        font-size: 8px;
+    }
+
+    .sd-ip-banner {
+        padding: 0 16px;
     }
 }
